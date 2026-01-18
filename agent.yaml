@@ -1,0 +1,35 @@
+name: notebook-to-gui
+role: Senior Python Engineer
+skills:
+  - repo_understanding
+  - code_edit
+  - refactor
+  - test_generation
+  - cli
+  - documentation
+
+workspace:
+  include:
+    - "**/*.ipynb"
+    - "**/*.py"
+    - "**/*.md"
+    - "**/*.txt"
+    - "**/*.toml"
+  exclude:
+    - ".venv/**"
+    - "venv/**"
+    - "__pycache__/**"
+    - ".git/**"
+
+rules:
+  - convert the notebook into a small python package: separate pure logic from UI
+  - prefer Streamlit for GUI unless impossible
+  - do not remove notebook; keep it as reference
+  - create an app entrypoint that runs with a single command
+  - add requirements.txt and a short README with run instructions
+  - after changes, run basic checks: python -m compileall . and any available tests
+  - ask no questions unless blocked by missing information in the notebook
+
+style:
+  verbosity: concise
+  code_style: pep8
