@@ -30,6 +30,7 @@ streamlit run app/app.py
 
 - The original notebook is kept for reference.
 - `INPUT.txt` is written into the selected workdir.
+- Last-used paths and parameters are saved to `config.json`.
 
 ## Русский
 
@@ -61,6 +62,7 @@ streamlit run app/app.py
 
 - Оригинальный ноутбук сохранен для справки.
 - `INPUT.txt` записывается в выбранную рабочую папку.
+- Последние пути и параметры сохраняются в `config.json`.
 
 ## 中文
 
@@ -92,3 +94,4 @@ streamlit run app/app.py
 
 - 保留原始 notebook 作为参考。
 - `INPUT.txt` 写入所选工作目录。
+- 最近使用的路径和参数会保存到 `config.json`。

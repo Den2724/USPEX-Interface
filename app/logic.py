@@ -132,6 +132,35 @@ def start_uspex_process(exe_path: str, workdir: str) -> subprocess.Popen:
     )
 
 
+def stop_uspex_process(proc: subprocess.Popen) -> None:
+    if proc is None:
+        return
+    try:
+        proc.terminate()
+        proc.wait(timeout=2)
+        return
+    except Exception:
+        pass
+    try:
+        subprocess.run(
+            ["taskkill", "/F", "/T", "/PID", str(proc.pid)],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+    except Exception:
+        pass
+    try:
+        subprocess.run(
+            ["taskkill", "/F", "/IM", "uspex.exe"],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+    except Exception:
+        pass
+
+
 class UspexMonitor:
     def __init__(self):
         self.current_gen = None

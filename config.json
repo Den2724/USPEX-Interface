@@ -1,0 +1,18 @@
+{
+  "exe_path": "C:/Users/andre/Downloads/quiz-app (2)/uspex.exe",
+  "workdir": "C:/Users/andre/Downloads/USPEX_25_windows",
+  "elements_text": "Si O",
+  "counts_text": "3 3",
+  "ratios_text": "",
+  "min_at_text": "8",
+  "max_at_text": "18",
+  "mode": "fixed",
+  "theme": "Ocean",
+  "custom_theme": {
+    "primary": "#445566",
+    "bg": "#F7F7F2",
+    "text": "#1E1E1E",
+    "task_text": "#1E1E1E"
+  },
+  "language": "ru"
+}
