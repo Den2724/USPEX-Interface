@@ -1,0 +1,35 @@
+{
+  "build": {
+    "beforeDevCommand": "",
+    "beforeBuildCommand": "",
+    "devPath": "http://127.0.0.1:8503",
+    "distDir": "../webapp/static"
+  },
+  "package": {
+    "productName": "USPEX Runner",
+    "version": "0.2.2"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": true
+    },
+    "bundle": {
+      "active": true,
+      "targets": ["nsis"],
+      "identifier": "com.uspex.runner",
+      "icon": ["icons/icon.ico"],
+      "resources": {
+        "../dist_backend/USPEX_Runner_Backend.exe": ".",
+        "../uspex.exe": ".",
+        "../STMng-1.55.2-setup.exe": "."
+      },
+      "windows": {
+        "nsis": {
+          "template": "../packaging/installer.nsi",
+          "installMode": "perMachine"
+        }
+      }
+    },
+    "windows": []
+  }
+}

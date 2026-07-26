@@ -1,0 +1,42 @@
+# Local runtime config
+config.json
+
+# Python virtual environment
+.uspex_int/
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# Build artifacts / outputs
+build/
+dist/
+dist_backend/
+dist_installer/
+*.spec
+
+# Rust / Tauri build output
+src-tauri/target/
+
+# IDE / editor caches
+.vs/
+.claude/
+
+# Stale duplicate project mirror
+to_server/
+
+# Large binaries / installers (not for git)
+uspex.exe
+STMng-*.exe
+uspex_manual_english_v2025.pdf
+
+# Scratch / unused test pages
+boom.html
+sunset.html
+wave.html
+agent - Copy.yaml

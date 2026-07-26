@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>USPEX Runner 🏃</title>
+  <link rel="stylesheet" href="/static/styles.css?v=39">
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="hero-top">
+        <div class="hero-brand">
+          <h1><span data-i18n="hero_title">USPEX Runner</span> <span id="hero_run_emoji" style="cursor:pointer;">🏃</span></h1>
+          <p data-i18n="hero_subtitle">Crystal Discovery Starts Here</p>
+        </div>
+        <div class="hero-controls">
+          <div id="boom_controls" class="boom-controls" style="display:none;">
+            <button id="boom_btn" type="button" data-i18n="boom_btn">Бум</button>
+          </div>
+          <label class="hero-control">
+            <span data-i18n="theme_label">Тема</span>
+            <select id="ui_theme">
+              <option value="Ocean">🟦 Ocean</option>
+              <option value="Forest">🟩 Forest</option>
+              <option value="Sunset">🟧 Sunset</option>
+              <option value="Violet Pulse">🟪 Violet Pulse</option>
+              <option value="Deep Blue">🟦 Deep Blue</option>
+              <option value="Noir">⬛ Noir</option>
+              <option value="White Linen">⬜ White Linen</option>
+              <option value="Pink Bloom">🩷 Pink Bloom</option>
+            </select>
+          </label>
+          <label class="hero-control">
+            <span data-i18n="lang_label">Язык</span>
+            <select id="ui_lang">
+              <option value="ru">🇷🇺 Русский</option>
+              <option value="en">🌐 English</option>
+              <option value="zh">🇨🇳 中文</option>
+              <option value="fa">🇮🇷 فارسی</option>
+              <option value="hi">🇮🇳 हिन्दी</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </header>
+
+    <section class="panel">
+      <div class="section-head">
+        <h2 data-i18n="paths_title">Paths</h2>
+        <button id="paths_toggle" class="icon-toggle" aria-expanded="true" title="Collapse/Expand">▾</button>
+      </div>
+      <div id="paths_wrap">
+        <div id="stmng_status" class="mono-card"></div>
+        <div class="grid two">
+          <label><span data-i18n="path_uspex">Path to uspex.exe</span><input id="exe_path" type="text"></label>
+          <label><span data-i18n="workdir">Workdir</span><input id="workdir" type="text"></label>
+          <label><span data-i18n="path_stmng">Path to STMng.exe</span><input id="stmng_exe_path" type="text"></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="file_browser_panel">
+      <div class="section-head">
+        <h2 data-i18n="file_browser">File Browser</h2>
+        <button id="browser_toggle" class="icon-toggle" aria-expanded="true" title="Collapse/Expand">▾</button>
+      </div>
+      <div id="browser_wrap">
+        <label><span data-i18n="current_folder">Current folder</span><input id="browser_current" type="text"></label>
+        <div class="row browser-toolbar-btns">
+          <button id="browser_root_btn">🏠 <span data-i18n="root_btn">Root</span></button>
+          <button id="browser_up" data-i18n-title="up_title">⬆️ ..</button>
+          <button id="browser_open" data-i18n="open_btn">Open</button>
+          <button id="browser_mkdir_btn" class="browser-mkdir-btn">＋</button>
+        </div>
+        <div class="browser-grid">
+          <div>
+            <h4 data-i18n="folders">Folders</h4>
+            <div id="browser_dirs"></div>
+          </div>
+          <div>
+            <h4 data-i18n="files">Files</h4>
+            <div id="browser_files"></div>
+          </div>
+        </div>
+        <div id="browser_file_view" class="mono-card" style="display:none;">
+          <div id="browser_file_summary" data-i18n="opened_file">Opened file</div>
+          <pre id="browser_text" class="mono-block"></pre>
+        </div>
+        <div id="browser_seed_check" class="mono-card"></div>
+      </div>
+      <div id="browser_ctx_menu" class="ctx-menu" style="display:none;">
+        <button id="browser_ctx_rename" class="ctx-item" data-i18n="ctx_rename">Rename</button>
+        <button id="browser_ctx_set_workdir" class="ctx-item" data-i18n="ctx_set_workdir">Set as working folder</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <h2 data-i18n="mode_title">Mode</h2>
+        <button id="mode_toggle" class="icon-toggle" aria-expanded="true" title="Collapse/Expand">▾</button>
+      </div>
+      <div id="mode_wrap">
+        <input id="mode" type="hidden" value="fixed">
+        <div class="mode-grid">
+          <div class="mode-item">
+            <button id="mode_fixed_btn" title="When exact composition is known" data-i18n="mode_fixed">Fixed composition</button>
+          </div>
+          <div class="mode-item">
+            <button id="mode_single_btn" title="When ratio is known but count is not" data-i18n="mode_single">Single block</button>
+          </div>
+          <div class="mode-item">
+            <button id="mode_variable_btn" title="When only elements are known" data-i18n="mode_variable">Variable composition</button>
+          </div>
+        </div>
+        <div class="mode-fields">
+          <label><span data-i18n="elements_formulas">Elements/formulas</span><input id="elements_text" type="text"></label>
+          <div class="at-group">
+          <label id="field_min_at">minAt<input id="min_at_text" type="text"></label>
+          <label id="field_max_at">maxAt<input id="max_at_text" type="text"></label>
+          <button id="specific_open_btn" type="button" class="specific-open-btn" title="Specific">📜🪶</button>
+          </div>
+          <label id="field_counts"><span data-i18n="counts_fixed">Counts (fixed)</span><input id="counts_text" type="text"></label>
+          <label id="field_ratios"><span data-i18n="ratios_single">Ratios (single)</span><input id="ratios_text" type="text"></label>
+        </div>
+        <label class="inline adv-toggle-global"><input id="adv_toggle" type="checkbox"> <span data-i18n="advanced_settings">Advanced settings</span></label>
+        <div id="advanced_block"></div>
+        <label><span data-i18n="input_preview">INPUT preview</span><textarea id="preview_text" rows="10"></textarea></label>
+        <div id="preview_dirty_hint" class="mono-card" style="display:none;" data-i18n="preview_dirty_hint">Определяющим является текст в данном окне.</div>
+        <div class="row">
+          <button id="preview_reset_btn" style="display:none;" data-i18n="preview_reset">Вернуть согласно параметрам</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="row">
+        <label class="inline"><input id="seeds_enabled" type="checkbox"> <span data-i18n="enable_seeds">Enable Seeds</span></label>
+      </div>
+      <div id="seeds_content">
+      <div class="seed-path-row">
+        <label class="seed-path-label">
+          <span class="adv-param-title">
+            <span class="has-tip" tabindex="0" aria-label="Path hint">
+              <span data-i18n="poscar_path">POSCAR/POSCARS path</span>
+              <span class="help-tooltip" data-i18n="poscar_hint_seed">Path to a local POSCAR/POSCARS file with one or multiple structures to validate and add into Seeds.</span>
+            </span>
+          </span>
+          <input id="seed_path" type="text">
+        </label>
+        <div class="seed-actions-inline">
+          <button id="seed_check_path" data-i18n="check_structures">Check Structures</button>
+          <button id="seed_add_path" data-i18n="add_btn">Add</button>
+        </div>
+      </div>
+      <div class="mono-card" id="seed_check_result" data-i18n="check_hint">Press "Check Structures" to see summary.</div>
+
+      <h3 data-i18n="materials_project">Materials Project</h3>
+      <div class="grid three">
+        <label><span data-i18n="api_key">API key</span><input id="mp_api_key" type="text"></label>
+        <label>
+          <span class="adv-param-title">
+            <span class="has-tip" tabindex="0" aria-label="System format hint">
+              <span data-i18n="system_label">System</span>
+              <span class="help-tooltip" data-i18n="system_hint">Use element symbols separated by hyphens, e.g. Fe-O or Li-Fe-O.</span>
+            </span>
+          </span>
+          <input id="mp_chemsys" type="text">
+        </label>
+        <label><span data-i18n="energy_above_hull">Energy Above Hull</span><input id="mp_ehull_max" type="text"></label>
+      </div>
+      <div class="row">
+        <button id="seed_add_mp" data-i18n="add_to_seeds">Add to Seeds</button>
+        <span id="seed_mp_status" class="mp-status" style="display:none;">
+          <span class="mp-spinner" aria-hidden="true"></span>
+          <span data-i18n="mining_structures">Добываем структуры</span>
+        </span>
+      </div>
+
+      <div id="seed_groups"></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="row">
+        <label class="inline"><input id="anti_seeds_enabled" type="checkbox"> <span data-i18n="enable_antiseeds">Enable AntiSeeds</span></label>
+      </div>
+      <div id="anti_seeds_content">
+      <div class="seed-path-row">
+        <label class="seed-path-label">
+          <span class="adv-param-title">
+            <span class="has-tip" tabindex="0" aria-label="Path hint">
+              <span data-i18n="poscar_path">POSCAR/POSCARS path</span>
+              <span class="help-tooltip" data-i18n="poscar_hint_anti">Path to a local POSCAR/POSCARS file with one or multiple structures to validate and add into AntiSeeds.</span>
+            </span>
+          </span>
+          <input id="anti_seed_path" type="text">
+        </label>
+        <div class="seed-actions-inline">
+          <button id="anti_seed_check_path" data-i18n="check_structures">Check Structures</button>
+          <button id="anti_seed_add_path" data-i18n="add_btn">Add</button>
+        </div>
+      </div>
+      <div class="mono-card" id="anti_seed_check_result" data-i18n="check_hint">Press "Check Structures" to see summary.</div>
+
+      <h3 data-i18n="materials_project">Materials Project</h3>
+      <div class="grid three">
+        <label><span data-i18n="api_key">API key</span><input id="anti_mp_api_key" type="text"></label>
+        <label>
+          <span class="adv-param-title">
+            <span class="has-tip" tabindex="0" aria-label="System format hint">
+              <span data-i18n="system_label">System</span>
+              <span class="help-tooltip" data-i18n="system_hint">Use element symbols separated by hyphens, e.g. Fe-O or Li-Fe-O.</span>
+            </span>
+          </span>
+          <input id="anti_mp_chemsys" type="text">
+        </label>
+        <label><span data-i18n="energy_above_hull">Energy Above Hull</span><input id="anti_mp_ehull_max" type="text"></label>
+      </div>
+      <div class="row">
+        <button id="anti_seed_add_mp" data-i18n="add_to_antiseeds">Add to AntiSeeds</button>
+        <span id="anti_seed_mp_status" class="mp-status" style="display:none;">
+          <span class="mp-spinner" aria-hidden="true"></span>
+          <span data-i18n="mining_structures">Добываем структуры</span>
+        </span>
+      </div>
+
+      <div id="anti_seed_groups"></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <h2 data-i18n="preview_results">Preview Results</h2>
+        <button id="preview_results_toggle" class="icon-toggle" aria-expanded="true" title="Collapse/Expand" data-i18n-title="collapse_expand_title">▾</button>
+      </div>
+      <div id="preview_results_wrap">
+        <div id="preview_results"></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2 data-i18n="run_title">Run</h2>
+      <div class="row">
+        <button id="run_btn" class="primary" data-i18n="run_btn">Run</button>
+        <button id="stop_btn" data-i18n="stop_btn">Stop</button>
+      </div>
+      <p id="status_line" data-i18n="status_idle">Status: idle</p>
+      <textarea id="log_text" rows="14" readonly></textarea>
+      <p class="vault-note">
+        <span data-i18n="vault_prefix">Get tired of discovering new materials? Have rest in our</span>
+        <a href="/StructureCollection/site/" target="_blank" rel="noopener noreferrer" data-i18n="vault_link">Crystal Vault</a>
+        <span data-i18n="vault_suffix">!</span>
+      </p>
+    </section>
+
+    <p id="flash"></p>
+  </main>
+
+  <div id="specific_modal" class="modal-overlay" style="display:none;">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3 data-i18n="specific_title">Specific</h3>
+        <button id="specific_close_btn" type="button">✖</button>
+      </div>
+      <div class="modal-body">
+        <label class="specific-enable-row">
+          <input id="specific_enabled" type="checkbox">
+          <span data-i18n="specific_use_custom">Использовать кастомный Specific</span>
+        </label>
+        <p class="mono-card" data-i18n="specific_description">
+          Папка Specific/ — это поддиректория (обычно располагающаяся по пути ~/StructurePrediction/Specific/), в которой хранятся все необходимые входные файлы для работы внешних вычислительных кодов (таких как VASP, SIESTA, GULP, ORCA и др.), которые USPEX использует для расчета энергии и релаксации (оптимизации) генерируемых структур.
+        </p>
+        <div class="row">
+          <button id="specific_add_defaults_btn" type="button">📜 <span data-i18n="specific_add_defaults">Добавить default Specific</span></button>
+          <button id="specific_add_file_btn" type="button">➕ <span data-i18n="specific_add_file">Добавить файл</span></button>
+        </div>
+        <div id="specific_files_list" class="stack"></div>
+        <div id="specific_editor_wrap" style="display:none;">
+          <label>
+            <span id="specific_editor_title" data-i18n="specific_editing_file">Редактирование файла</span>
+            <textarea id="specific_editor_text" rows="10"></textarea>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="prompt_modal" class="modal-overlay" style="display:none;">
+    <div class="modal-card" style="width:min(400px,92vw);">
+      <div class="modal-head">
+        <h3 id="prompt_modal_title"></h3>
+        <button id="prompt_modal_close" type="button">✖</button>
+      </div>
+      <div class="modal-body">
+        <input id="prompt_modal_input" type="text">
+        <div class="row">
+          <button id="prompt_modal_ok" class="primary" data-i18n="prompt_ok">OK</button>
+          <button id="prompt_modal_cancel" data-i18n="run_cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="run_confirm_modal" class="modal-overlay" style="display:none;">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3 data-i18n="run_confirm_title">Ready to run?</h3>
+        <button id="run_confirm_close_btn" type="button">✖</button>
+      </div>
+      <div class="modal-body">
+        <pre id="run_confirm_preview" class="run-confirm-preview"></pre>
+        <div class="run-confirm-workdir">Workdir: <code id="run_confirm_workdir"></code></div>
+        <div class="row">
+          <button id="run_confirm_ok_btn" class="primary" data-i18n="run_confirm_proceed">Run</button>
+          <button id="run_confirm_cancel_btn" data-i18n="run_cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/app.js?v=49"></script>
+</body>
+</html>

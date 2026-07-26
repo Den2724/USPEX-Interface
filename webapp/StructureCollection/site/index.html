@@ -1,0 +1,84 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Crystal Vault</title>
+  <link rel="stylesheet" href="styles.css?v=2" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet" />
+  <script src="https://3dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="hero-text">
+        <p class="kicker">Materials science database</p>
+        <h1>Crystal Vault</h1>
+        <p class="sub">Browse, search, and inspect crystallographic structures from local CIF data.</p>
+      </div>
+      <div class="stats" id="stats">
+        <div>
+          <span class="stat-label">Crystals</span>
+          <span class="stat-value" id="crystal-count">—</span>
+        </div>
+        <div>
+          <span class="stat-label">Format</span>
+          <span class="stat-value">CIF</span>
+        </div>
+        <div>
+          <span class="stat-label">Viewer</span>
+          <span class="stat-value">3Dmol.js</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel library-panel">
+        <div class="library-header">
+          <h2 class="header-title">Crystal List</h2>
+          <h2 id="viewer-title" class="header-title center-title">Select a crystal</h2>
+          <div class="toggle-group" role="group" aria-label="Cell type">
+            <button id="cell-primitive" class="btn btn-toggle is-active" type="button">Primitive</button>
+            <button id="cell-conventional" class="btn btn-toggle" type="button">Conventional</button>
+          </div>
+        </div>
+        <div class="library-subheader">
+          <div class="search">
+            <input id="search" type="search" placeholder="Search crystals" aria-label="Search crystals" />
+          </div>
+          <div class="style-group">
+            <button id="style-sphere" class="btn btn-style" type="button">Ball + stick</button>
+            <button id="style-stick" class="btn btn-style" type="button">Stick</button>
+            <button id="style-surface" class="btn btn-style" type="button">Surface</button>
+            <button id="toggle-labels" class="btn btn-style" type="button">Labels</button>
+            <button id="fullscreen-view" class="btn btn-style" type="button">Full screen</button>
+            <button id="reset-view" class="btn btn-ghost" type="button">Reset</button>
+          </div>
+          <div></div>
+        </div>
+        <div class="library-body" id="library-body">
+          <div class="list-column" id="list-column">
+            <div class="list" id="crystal-list" aria-live="polite"></div>
+          </div>
+          <div class="splitter" id="splitter" role="separator" aria-orientation="vertical" aria-label="Resize panels"></div>
+          <div class="viewer-column">
+            <div class="viewer-wrap" id="viewer-wrap">
+              <div id="viewer" class="viewer"></div>
+              <div class="viewer-empty" id="viewer-empty">
+                <p>Pick a crystal from the list to render the structure.</p>
+                <p class="hint">Tip: Use your mouse to rotate, scroll to zoom, and right-drag to pan.</p>
+              </div>
+            </div>
+            <div class="meta" id="meta"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+

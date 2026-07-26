@@ -1,0 +1,382 @@
+{
+  "graph": {
+    "reader": {
+      "label": "Reader",
+      "type": "structure-reader"
+    },
+    "symmetry": {
+      "label": "Symmetries",
+      "type": "compute-symmetries",
+      "in": "reader"
+    },
+    "unit": {
+      "label": "Unit Cell",
+      "type": "draw-unit-cell",
+      "in": "symmetry"
+    },
+    "bonds": {
+      "label": "Bonds",
+      "type": "compute-bonds",
+      "in": "unit"
+    },
+    "draw": {
+      "label": "Draw structure",
+      "type": "draw-structure",
+      "in": "slice"
+    },
+    "matchers": {
+      "label": "Find similar structures",
+      "type": "find-similar",
+      "in": "symmetry"
+    },
+    "slice": {
+      "label": "Slicer",
+      "type": "slice-structure",
+      "in": "bonds"
+    },
+    "backbone": {
+      "label": "Backbone",
+      "type": "structure-backbone",
+      "in": "symmetry"
+    },
+    "cfp": {
+      "label": "Fingerprints",
+      "type": "compute-fingerprints",
+      "in": "reader"
+    },
+    "sets": {
+      "label": "Analyze structure sets",
+      "type": "analyze-structure-sets",
+      "in": "reader"
+    },
+    "polyhedra": {
+      "label": "Polyhedra",
+      "type": "draw-polyhedra",
+      "in": "bonds"
+    },
+    "shape": {
+      "label": "Crystal shape",
+      "type": "compute-crystal-shape",
+      "in": "bonds"
+    },
+    "smooth": {
+      "label": "Interpolate volume",
+      "type": "interpolate-volume",
+      "in": "unit"
+    },
+    "ortho": {
+      "label": "Orthoslice",
+      "type": "orthoslice",
+      "in": "smooth"
+    },
+    "iso": {
+      "label": "Isosurface",
+      "type": "isosurface",
+      "in": "smooth"
+    },
+    "trace": {
+      "label": "Trajectories",
+      "type": "draw-trajectories",
+      "in": "bonds"
+    },
+    "xray": {
+      "label": "X-Ray diffraction",
+      "type": "diffraction-pattern",
+      "in": "symmetry"
+    },
+    "measure": {
+      "label": "Measures",
+      "type": "measures",
+      "in": "bonds"
+    },
+    "writer": {
+      "label": "Writer",
+      "type": "structure-writer",
+      "in": "bonds"
+    },
+    "capture": {
+      "label": "Capture media",
+      "type": "capture-view"
+    },
+    "viewer": {
+      "label": "Viewer",
+      "type": "viewer-3d"
+    }
+  },
+  "viewer": {
+    "camera": {
+      "type": "orthographic",
+      "position": [
+        0.7160390103945311,
+        0.4296234062367188,
+        0.7160390103945312
+      ],
+      "lookAt": [
+        0,
+        0,
+        0
+      ],
+      "snapshotFormat": "png",
+      "snapshotTransparent": false,
+      "stlFormat": "binary",
+      "forcePosition": [
+        5,
+        3,
+        5
+      ],
+      "forceLookAt": [
+        0,
+        0,
+        0
+      ],
+      "autoReset": false
+    },
+    "scene": {
+      "background": "#90CEEC",
+      "depthCueing": false,
+      "depthNear": 10,
+      "depthFar": 50
+    },
+    "lights": {
+      "ambientColor": "#FFFFFF",
+      "ambientIntensity": 0.5,
+      "directional1Color": "#FFFFFF",
+      "directional1Intensity": 1.5,
+      "directional2Color": "#FFFFFF",
+      "directional2Intensity": 1.5,
+      "directional3Color": "#FFFFFF",
+      "directional3Intensity": 1.5,
+      "directional1Position": [
+        0,
+        1,
+        0
+      ],
+      "directional2Position": [
+        0.5774,
+        0.5774,
+        0.5774
+      ],
+      "directional3Position": [
+        -0.5774,
+        -0.5774,
+        -0.5774
+      ]
+    },
+    "helpers": {
+      "showAxis": false,
+      "showGridXZ": false,
+      "showGridXY": false,
+      "showGridYZ": false,
+      "gridSize": 10,
+      "axisLength": 1,
+      "showGizmo": false
+    }
+  },
+  "ui": {
+    "reader": {
+      "loopSteps": false,
+      "stepBackward": false,
+      "format": "POSCAR",
+      "atomsTypes": "",
+      "useBohr": true,
+      "readHydrogen": false,
+      "energyPerAtom": false,
+      "stepIncrement": 1,
+      "speed": 1
+    },
+    "symmetry": {
+      "applyInputSymmetries": true,
+      "enableFindSymmetries": true,
+      "standardizeCell": true,
+      "symprecStandardize": -1,
+      "symprecDataset": -1,
+      "fillUnitCell": true,
+      "fillTolerance": -5,
+      "standardizeOnly": false,
+      "createPrimitiveCell": false,
+      "computePointGroup": false,
+      "positionTolerance": 0.3,
+      "eigenvalueTolerance": 0.01,
+      "displayMode": "international"
+    },
+    "unit": {
+      "showUnitCell": true,
+      "dashedLine": false,
+      "lineColor": "#0000FF",
+      "showBasisVectors": false,
+      "repetitionsA": 1,
+      "repetitionsB": 1,
+      "repetitionsC": 1,
+      "showSupercell": false,
+      "supercellColor": "#02A502",
+      "dashedSupercell": false,
+      "lineWidth": 0,
+      "percentA": 0,
+      "percentB": 0,
+      "percentC": 0,
+      "shrink": false
+    },
+    "bonds": {
+      "minBondingDistance": 0.64,
+      "maxBondingDistance": 4.5,
+      "maxHBondingDistance": 3,
+      "maxHValenceAngle": 30,
+      "enableComputeBonds": true,
+      "bondScale": 1.1,
+      "perPairScale": false,
+      "perPairData": "[]",
+      "enlargementKind": "neighbors"
+    },
+    "draw": {
+      "drawKind": "ball-and-stick",
+      "drawQuality": 4,
+      "drawRoughness": 0.5,
+      "drawMetalness": 0.6,
+      "labelKind": "symbol",
+      "showBonds": true,
+      "showAtoms": true,
+      "showLabels": true,
+      "shadedBonds": false,
+      "showBondsStrengths": false,
+      "atomColoring": "type",
+      "monochromeColor": "#888888",
+      "bondsRadiusMultiplier": 1,
+      "spheresRadiusMultiplier": 1,
+      "legend": false
+    },
+    "matchers": {
+      "enabled": false,
+      "numberMatches": 3,
+      "lengthTolerance": 0.2,
+      "siteTolerance": 0.3,
+      "angleTolerance": 5
+    },
+    "slice": {
+      "enableSlicer": false,
+      "showSlicer": false,
+      "sliceInside": false,
+      "mode": "plane",
+      "parallelA": false,
+      "percentA": 50,
+      "parallelB": false,
+      "percentB": 50,
+      "parallelC": false,
+      "percentC": 50,
+      "millerH": 1,
+      "millerK": 0,
+      "millerL": 0,
+      "millerPlaneOffset": 0,
+      "selectorKind": "symbol",
+      "atomsSelector": "",
+      "sphereRadius": 1,
+      "thickness": 1,
+      "geometryColor": "#FFFFFF80"
+    },
+    "backbone": {
+      "enableStructureBackbone": false,
+      "selectorKind": "label",
+      "atomsSelector": "",
+      "radius": 0.3,
+      "threshold": 0.9
+    },
+    "cfp": {
+      "enableEnergyFiltering": false,
+      "energyThreshold": 0,
+      "thresholdFromMinimum": false,
+      "areNanoclusters": false,
+      "forceCutoff": false,
+      "manualCutoffDistance": 10,
+      "fingerprintingMethod": 0,
+      "binSize": 0.05,
+      "peakWidth": 0.02,
+      "distanceMethod": 0,
+      "fixTriangleInequality": false,
+      "groupingMethod": 0,
+      "groupingThreshold": 0.1,
+      "addedMargin": 0,
+      "removeDuplicates": true,
+      "duplicatesThreshold": 0.015,
+      "processParallelism": false
+    },
+    "sets": {
+      "numberComponents": 2,
+      "filterStructures": true,
+      "distanceFromHull": 0.15,
+      "energyFromMinimum": 0.1,
+      "forceCutoff": true,
+      "manualCutoffDistance": 10,
+      "fingerprintingMethod": 0,
+      "binSize": 0.05,
+      "peakWidth": 0.02,
+      "distanceMethod": 0,
+      "fixTriangleInequality": false,
+      "removeDuplicates": true,
+      "duplicatesThreshold": 0.03,
+      "consolidateOutput": false
+    },
+    "polyhedra": {
+      "color": "#FFFFFF80",
+      "labelKind": "symbol",
+      "atomsSelector": "",
+      "showPolyhedra": true,
+      "colorByCenterAtom": true,
+      "opacityByCenterAtom": 0.5,
+      "constrainVertices": "any",
+      "countVertices": 3
+    },
+    "shape": {
+      "allPlanes": false,
+      "maxPlanesCount": 80,
+      "processParallelism": false
+    },
+    "smooth": {
+      "interpolateVolume": false,
+      "pointsToAdd": 1
+    },
+    "ortho": {
+      "dataset": 0,
+      "axis": 0,
+      "plane": 0,
+      "showOrthoslice": false,
+      "colormapName": "rainbow",
+      "useColorClasses": false,
+      "colorClasses": 5,
+      "showIsolines": false,
+      "isoValue": 0,
+      "colorIsolines": false
+    },
+    "iso": {
+      "showIsosurface": false,
+      "dataset": 0,
+      "isoValue": 0,
+      "colormapName": "rainbow",
+      "opacity": 1,
+      "nestedIsosurfaces": false,
+      "countIsosurfaces": 2,
+      "limitLow": -10,
+      "limitHigh": 10,
+      "limitColormap": false
+    },
+    "trace": {
+      "showTrajectories": false,
+      "labelKind": "symbol",
+      "atomsSelector": "",
+      "maxDisplacement": 1,
+      "showPositionClouds": false,
+      "positionCloudsSize": 100
+    },
+    "xray": {
+      "thetaLow": 0,
+      "thetaHigh": 90,
+      "width": 0.25,
+      "wavelengthCode": "CuKa",
+      "wavelengthNumeric": 1.54184,
+      "showHKL": false,
+      "threshold": 3
+    },
+    "writer": {
+      "format": "",
+      "continuous": false
+    }
+  }
+}

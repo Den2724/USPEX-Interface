@@ -1,0 +1,39 @@
+# generated using pymatgen
+data_SrGa2(SiO4)2
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   8.39870000
+_cell_length_b   9.00090000
+_cell_length_c   9.48400000
+_cell_angle_alpha   90.00000000
+_cell_angle_beta   90.00000000
+_cell_angle_gamma   90.68200000
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   SrGa2(SiO4)2
+_chemical_formula_sum   'Sr1 Ga2 Si2 O8'
+_cell_volume   716.90033518
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Sr  Sr0  1  0.25150000  0.88930000  0.58690000  1.0
+  Ga  Ga1  1  0.93020000  0.22840000  0.07430000  1.0
+  Ga  Ga2  1  0.57320000  0.05300000  0.80900000  1.0
+  Si  Si3  1  0.55960000  0.24340000  0.08150000  1.0
+  Si  Si4  1  0.94630000  0.06110000  0.79830000  1.0
+  O  O5  1  0.01500000  0.19300000  0.90200000  1.0
+  O  O6  1  0.48940000  0.18990000  0.93080000  1.0
+  O  O7  1  0.93970000  0.11880000  0.63490000  1.0
+  O  O8  1  0.55940000  0.12300000  0.62820000  1.0
+  O  O9  1  0.07340000  0.92680000  0.80390000  1.0
+  O  O10  1  0.43650000  0.89300000  0.80590000  1.0
+  O  O11  1  0.77420000  0.00610000  0.85510000  1.0
+  O  O12  1  0.73670000  0.31840000  0.07440000  1.0

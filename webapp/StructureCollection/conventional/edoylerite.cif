@@ -1,0 +1,36 @@
+# generated using pymatgen
+data_CrHg3(SO2)2
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   7.46290000
+_cell_length_b   7.52830000
+_cell_length_c   14.83250000
+_cell_angle_alpha   90.00000000
+_cell_angle_beta   90.00000000
+_cell_angle_gamma   118.74600000
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   CrHg3(SO2)2
+_chemical_formula_sum   'Cr1 Hg3 S2 O4'
+_cell_volume   730.63385063
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Cr  Cr0  1  0.10830000  0.38000000  0.09590000  1.0
+  Hg  Hg1  1  0.63190000  0.83270000  0.04320000  1.0
+  Hg  Hg2  1  0.08140000  0.89670000  0.14370000  1.0
+  Hg  Hg3  1  0.60240000  0.40480000  0.16330000  1.0
+  S  S4  1  0.73200000  0.76000000  0.18650000  1.0
+  S  S5  1  0.43100000  0.06900000  0.10340000  1.0
+  O  O6  1  0.99300000  0.50900000  0.12300000  1.0
+  O  O7  1  0.18000000  0.30700000  0.19100000  1.0
+  O  O8  1  0.30200000  0.51300000  0.03300000  1.0
+  O  O9  1  0.96300000  0.17600000  0.03600000  1.0

@@ -1,0 +1,16 @@
+[package]
+name = "uspex_runner_tauri"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
+
+[build-dependencies]
+tauri-build = { version = "1.5", features = [] }
+
+[dependencies]
+tauri = { version = "1.6", features = ["api-all"] }
+time = "=0.3.36"
+ignore = "=0.4.23"
