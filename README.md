@@ -1,5 +1,33 @@
 # USPEX Streamlit GUI
 
+## Required binaries (not included in this repository)
+
+This repository contains only the wrapper/GUI code. It does **not** include and will **not** accept commits of:
+
+- `uspex.exe` — the USPEX binary itself
+- `STMng-*-setup.exe` — the STMng visualizer installer
+
+Both are distributed under their own license by the USPEX team and must be obtained separately from the official USPEX website: https://uspex-team.org/
+
+Before running or building the installer:
+
+1. Place the USPEX executable as `uspex.exe` in the repository root (or point the app to its actual location via the Paths settings / `config.json`).
+2. Place the STMng installer in the repository root, matching the filename referenced in `packaging/installer.iss` (currently `STMng-1.68.3-setup.exe`) — update that filename in `installer.iss` if you have a different STMng version.
+
+## Требуемые бинарники (не входят в репозиторий)
+
+Этот репозиторий содержит только код обёртки/интерфейса. Он **не** включает и **не** принимает в коммиты:
+
+- `uspex.exe` — сам бинарник USPEX
+- `STMng-*-setup.exe` — установщик визуализатора STMng
+
+Оба распространяются по собственной лицензии USPEX team и должны быть получены отдельно с официального сайта USPEX: https://uspex-team.org/
+
+Перед запуском или сборкой инсталлятора:
+
+1. Положите исполняемый файл USPEX как `uspex.exe` в корень репозитория (или укажите приложению его фактическое расположение через настройки Paths / `config.json`).
+2. Положите установщик STMng в корень репозитория с именем, указанным в `packaging/installer.iss` (сейчас это `STMng-1.68.3-setup.exe`) — при другой версии STMng измените имя файла в `installer.iss`.
+
 ## HTML/Flask Version (No Streamlit)
 
 This repository now also includes a non-Streamlit web interface:

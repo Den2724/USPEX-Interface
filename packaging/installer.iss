@@ -27,14 +27,14 @@ Name: "installstmng"; Description: "Install STMng visualizer (recommended if not
 
 [Files]
 Source: "..\dist\USPEX_Runner\*"; DestDir: "{app}"; Flags: recursesubdirs ignoreversion
-Source: "..\STMng-1.55.2-setup.exe"; DestDir: "{tmp}"; Flags: deleteafterinstall; Check: not IsSTMngInstalled
+Source: "..\STMng-1.68.3-setup.exe"; DestDir: "{tmp}"; Flags: deleteafterinstall; Check: not IsSTMngInstalled
 
 [Icons]
 Name: "{group}\USPEX Runner"; Filename: "{app}\{#MyAppExeName}"
 Name: "{autodesktop}\USPEX Runner"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
-Filename: "{tmp}\STMng-1.55.2-setup.exe"; Description: "Install STMng"; Flags: postinstall shellexec skipifsilent; Check: (not IsSTMngInstalled) and WizardIsTaskSelected('installstmng')
+Filename: "{tmp}\STMng-1.68.3-setup.exe"; Description: "Install STMng"; Flags: postinstall shellexec skipifsilent; Check: (not IsSTMngInstalled) and WizardIsTaskSelected('installstmng')
 Filename: "{app}\{#MyAppExeName}"; Description: "Launch USPEX Runner"; Flags: nowait postinstall skipifsilent
 
 [Code]
